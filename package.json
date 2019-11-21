@@ -26,6 +26,8 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser-js": "^5.0.1",
     "gulp-uglify": "^3.0.2",
+    "imagemin-giflossy": "^5.1.10",
+    "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
