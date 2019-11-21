@@ -12,7 +12,9 @@ const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const del = require('del');
 const imagemin = require('gulp-imagemin');
-const pngquant = require('imagemin-pngquant');
+const imageminGiflossy = require('imagemin-giflossy');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
 const babelify = require('babelify');
 
 const markupSRC = 'app/index.html',
@@ -90,12 +92,25 @@ gulp.task('scripts', () => {
 
 gulp.task('img', () => {
 	return gulp.src(imgFiles)
-		.pipe( imagemin({
-			interplaced: true,
-			progressive: true,
-			svgoPlugins: [{ removeViewBox: false }],
-			use: [pngquant()]
-		}) )
+		.pipe(imagemin([
+			imageminGiflossy({
+				interplaced: true,
+				optimizationLevel: 3,
+				lossy: 2
+			}),
+			imageminMozjpeg({
+				quality: 90
+			}),
+			imageminPngquant({
+				speed: 1,
+				quality: [0.95, 1]
+			}),
+			imagemin.svgo({
+				plugins: [
+					{removeViewBox: true}
+				]
+			})
+		]))
 		.pipe( gulp.dest(imgDest) )
 		.pipe( browserSync.reload({ stream: true }) );
 });
