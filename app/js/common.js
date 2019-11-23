@@ -4,20 +4,26 @@ const $ = require('jquery');
 const popper = require('popper.js');
 const bootstrap = require('bootstrap');
 
-$(document).on("DOMContentLoaded", () => {
-	$('.carousel').css('display', 'block');
-	modalWindow();
-	fadingElem();
-	lazyImg();
-});
+modalWindow();
+fadingElems();
+lazyImg();
+
+$('.carousel').on('slide.bs.carousel', e => {
+
+	//lazy loading for slides
+	let img = $(e.relatedTarget).find('img[data-src]');
+	img.attr('src', img.data('src'));
+	img.removeAttr('data-src');
+
+})
 
 function modalWindow() {
 	const modal = $('#modal'),
-		  modalOverlay = $('#modal-overlay'),
-		  closeButton = $('#close-button'),
-		  openButton = $('#map-image'),
-		  contactsLink = $('#modal a'),
-		  mapMark = $('.map-mark');
+		  modalOverlay = $('#modalOverlay'),
+		  closeButton = $('#closeButton'),
+		  openButton = $('#mapImage'),
+		  contactsLink = $('#modal .location-link'),
+		  mapMark = $('#mapImage .map-mark');
 
 	const toggleModal = () => {
 		modal.toggleClass("opened");
@@ -41,7 +47,7 @@ function modalWindow() {
 	});
 };
 
-function fadingElem() {
+function fadingElems() {
 	const targetElem = document.querySelectorAll('.fading');
 
 	if ('IntersectionObserver' in window) {
@@ -61,12 +67,14 @@ function fadingElem() {
 			targetElem[i].classList.add('fade-in');
 		}
 	}
+
 };
 
 function lazyImg() {
-	const targetImg = document.querySelectorAll('img.lazy-img');
+	const targetImg = document.getElementsByClassName('lazy-img');
 
 	if ('IntersectionObserver' in window) {
+
 		const lazyImgObserver = new IntersectionObserver( (entries) => {
 			entries.forEach( (entry) => {
 				if (entry.isIntersecting) {
@@ -75,12 +83,20 @@ function lazyImg() {
 				}
 			})
 		});
-		targetImg.forEach( (i) => {
-			lazyImgObserver.observe(i);
-		});	
+
+		Array.from(targetImg).forEach( el => {
+			if (el.dataset.src) {
+				lazyImgObserver.observe(el);
+			} else {
+				el.src = el.dataset.src;
+			}
+		})
+
 	} else {
+
 		for (let i = 0; i < targetImg.length; i++) {
 			targetImg[i].src = targetImg[i].dataset.src;
 		}
+
 	}
 };
