@@ -31,7 +31,6 @@ body
 	font-size: 16px
 	min-width: 350px
 .page-container
-	overflow-x: hidden
 	padding: 0
 
 .main-header
@@ -147,6 +146,7 @@ body
 	position: relative
 	background-color: #2d2d2d
 	padding: 60px 0 40px 0
+	overflow: hidden
 .about-header
 	text-align: center
 	margin-bottom: 40px
@@ -191,6 +191,22 @@ body
 	.fifth-mark
 		bottom: 20%
 		right: 17%
+.about-content
+	position: relative
+	ul
+		li
+			width: 100%
+			color: #ffffff
+			transition: 1s linear
+			margin-bottom: 40px
+			&:first-child
+				transform: translateX(-50%)
+			&:last-child
+				transform: translateX(50%)
+			&.fade-in
+				transform: none
+			p
+				font-family: 'Arial'
 
 .modal
 	display: none
@@ -274,23 +290,7 @@ body
 		color: rgba(31, 31, 31, 0.99)
 		&:hover
 			color: #a161db
-			
-.about-content
-	position: relative
-	ul
-		li
-			width: 100%
-			color: #ffffff
-			transition: 1s linear
-			margin-bottom: 40px
-			&:first-child
-				transform: translateX(-50%)
-			&:last-child
-				transform: translateX(50%)
-			&.fade-in
-				transform: none
-			p
-				font-family: 'Arial'
+
 .team
 	background-color: #ebebeb
 	padding: 30px
@@ -347,6 +347,7 @@ body
 	background-color: #ebebeb
 	padding-top: 30px
 	padding-bottom: 10px
+	overflow: hidden
 	.article
 		position: relative
 		background-color: #fff
