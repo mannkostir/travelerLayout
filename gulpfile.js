@@ -80,14 +80,14 @@ gulp.task('scripts', () => {
 	})
 		.transform( babelify )
 		.bundle()
-		.pipe( source('bundle.js') )
-		.pipe( rename({ suffix: '.min' }) )
-		.pipe( buffer() )
-		.pipe( sourcemaps.init() )
-		.pipe( uglify() )
-		.pipe( sourcemaps.write('.') )
-		.pipe( gulp.dest(scriptsDEST) )
-		.pipe( browserSync.reload({ stream: true }) );
+			.pipe( source('bundle.js') )
+			.pipe( rename({ suffix: '.min' }) )
+			.pipe( buffer() )
+			.pipe( sourcemaps.init() )
+			.pipe( uglify() )
+			.pipe( sourcemaps.write('.') )
+			.pipe( gulp.dest(scriptsDEST) )
+			.pipe( browserSync.reload({ stream: true }) );
 });
 
 gulp.task('img', () => {

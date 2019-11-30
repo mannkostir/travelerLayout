@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-	<header>
+	<header class="main-header">
 		<div class="container">
 			<nav class="main-nav">
 				<div class="row align-items-center no-gutters">
@@ -48,6 +48,7 @@
 					</div>
 				</nav>
 			</nav>
+		</div>
 	</header>
 	<section class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -74,8 +75,8 @@
 				<h3>Anywhere, anytime, we're here to help</h3>
 				<p>Open the map to find us easily</p>
 			</div>
-			<div class="row about-image fading">
-				<img class="col-12 map lazy-img" src="data:image/gif;base64,R0lGODlhBQABAIAAAP///wAAACH5BAEAAAEALAAAAAAFAAEAAAICjF0AOw==" data-src="img/Map.png" alt="map-image" id="mapImage">
+			<div class="row about-image fading" id="modalShow">
+				<img class="col-12 map" src="img/Map.png" alt="map-image">
 				<img src="img/icons/mark_icon.png" alt="map-icon" class="first-mark map-mark">
 				<img src="img/icons/mark_icon.png" alt="map-icon" class="second-mark map-mark">
 				<img src="img/icons/mark_icon.png" alt="map-icon" class="third-mark map-mark">
@@ -229,24 +230,50 @@
 			</div>
 		</div>
 	</footer>
-	<div class="modal locations" id="modal">
-		<button class="close-button modal-button" id="closeButton">X</button>
-		<div class="modal-content align-items-center">
-			<div class="modal-header d-flex flex-column align-items-center">
-				<h5>Our location</h5>
-				<p>We'll be happy to help you travel</p>
+	<div class="modal" id="modal">
+		<div class="modal-container">
+			<button class="close-button" id="modalHide">X</button>
+			<div class="modal-inner">
+				<header class="modal-header">
+					<h5 class="title">Our location</h5>
+					<p class="text">We'll be happy to help you travel</p>
+				</header>
+				<div class="modal-divider"></div>
+				<ul class="modal-locations">
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+					<li class="locations-item">
+						<a class="locations-link" href="#">Office location</a>
+					</li>
+				</ul>
 			</div>
-			<div class="divider"></div>
-			<ul class="locations">
-				<li><a class="location-link" href="#">Office location</a></li>
-				<li><a class="location-link" href="#">Office location</a></li>
-				<li><a class="location-link" href="#">Office location</a></li>
-				<li><a class="location-link" href="#">Office location</a></li>
-				<li><a class="location-link" href="#">Office location</a></li>
-			</ul>
 		</div>
 	</div>
-	<div class="modal-overlay" id="modalOverlay"></div>
 	<script src="js/bundle.min.js"></script>
 </body>
 </html>
